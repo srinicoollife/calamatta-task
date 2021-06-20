@@ -11,10 +11,13 @@
   <p class="value">$ {{ stock_details.high }}</p>
   <p class="label">Low</p>
   <p class="value">${{ stock_details.low }}</p>
-  <p class="label">52 Wk High</p>
-  <p class="value">${{ stock_details["52_wk_high"] }}</p>
-  <p class="label">52 Wk Low</p>
-  <p class="value">${{ stock_details["52_wk_low"] }}</p>
+  <div id="yearly_data">
+    <p class="label">52 Wk High</p>
+
+    <p class="value">${{ stock_details["52_wk_high"] }}</p>
+    <p class="label">52 Wk Low</p>
+    <p class="value">${{ stock_details["52_wk_low"] }}</p>
+  </div>
   <p class="label">Prev Close</p>
   <p class="value">${{ stock_details.prev_close }}</p>
   <label class="switch">

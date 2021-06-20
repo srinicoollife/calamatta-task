@@ -3,6 +3,7 @@
   padding: 30px 50px;
   text-align: center;
   margin-bottom: 25px;
+  width: 280px;
 }
 .title {
   font-size: 26px;
@@ -19,6 +20,16 @@
 }
 .value {
   font-size: 14px;
+}
+#yearly_data {
+  display: none;
+}
+
+/* to target desktop */
+@media screen and (min-width: 720px) {
+  #yearly_data {
+    display: block;
+  }
 }
 
 /* toggle switch css */

@@ -1,6 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { StockService } from '../../services/stock.service';
 import { POLLING_TIMER } from '../../consts';
+import { Stock } from '../../services/stock.service';
 
 @Component({
   selector: 'app-stock-card',
@@ -8,10 +9,10 @@ import { POLLING_TIMER } from '../../consts';
   styleUrls: ['./stock-card.component.css'],
 })
 export class StockCardComponent implements OnInit {
-  @Input() stock;
-  stock_details;
-  polling_ref;
-  stock_active = true;
+  @Input() stock: string;
+  stock_details: Stock;
+  stock_active: boolean = true;
+  polling_ref: number;
 
   constructor(private stockService: StockService) {}
 
@@ -21,7 +22,7 @@ export class StockCardComponent implements OnInit {
   }
 
   fetchStockDetails = () => {
-    this.stockService.getStockDetails(this.stock).subscribe((res) => {
+    this.stockService.getStockDetails(this.stock).subscribe((res: Stock) => {
       this.stock_details = res;
     });
   };
@@ -35,12 +36,6 @@ export class StockCardComponent implements OnInit {
   stopPolling = () => window.clearInterval(this.polling_ref);
 
   // handle custom events
-  handle_stockToggle = () => {
-    console.log(this.stock_active);
-    if (this.stock_active) {
-      this.startPolling();
-    } else {
-      this.stopPolling();
-    }
-  };
+  handle_stockToggle = () =>
+    this.stock_active ? this.startPolling() : this.stopPolling();
 }
