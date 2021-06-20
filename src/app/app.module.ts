@@ -7,10 +7,11 @@ import { HttpClientModule } from '@angular/common/http';
 import { StocksComponent } from './screens/stocks/stocks.component';
 import { StockService } from './services/stock.service';
 import { StockCardComponent } from './components/stock-card/stock-card.component';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [AppComponent, StocksComponent, StockCardComponent],
-  imports: [BrowserModule, AppRoutingModule, HttpClientModule],
+  imports: [BrowserModule, AppRoutingModule, HttpClientModule, FormsModule],
   providers: [StockService],
   bootstrap: [AppComponent],
 })

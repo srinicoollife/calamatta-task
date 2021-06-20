@@ -1,16 +1,28 @@
-<div class="stock-card">
-  <p class="title">APPLE</p>
-  <p class="sub-title mb-4">$36</p>
+<div
+  class="stock-card"
+  [ngStyle]="{
+    'background-color':
+      stock_details.price > stock_details.prev_close ? 'green' : 'red'
+  }"
+>
+  <p class="title">{{ stock_details.name }}</p>
+  <p class="sub-title mb-4">${{ stock_details.price }}</p>
   <p class="label">High</p>
-  <p class="value">$30</p>
+  <p class="value">$ {{ stock_details.high }}</p>
   <p class="label">Low</p>
-  <p class="value">$22</p>
+  <p class="value">${{ stock_details.low }}</p>
   <p class="label">52 Wk High</p>
-  <p class="value">$22</p>
+  <p class="value">${{ stock_details["52_wk_high"] }}</p>
   <p class="label">52 Wk Low</p>
-  <p class="value">$22</p>
+  <p class="value">${{ stock_details["52_wk_low"] }}</p>
+  <p class="label">Prev Close</p>
+  <p class="value">${{ stock_details.prev_close }}</p>
   <label class="switch">
-    <input type="checkbox" checked />
+    <input
+      type="checkbox"
+      [(ngModel)]="stock_active"
+      (change)="handle_stockToggle()"
+    />
     <span class="slider round"></span>
   </label>
 </div>
